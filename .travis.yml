@@ -12,8 +12,8 @@ env:
 deploy:
   provider: script
   script:
-    bash .travis/deploy_dockerhub.sh
-    bash .travis/deploy_heroku.sh
+  - bash .travis/deploy_dockerhub.sh
+  - bash .travis/deploy_heroku.sh
   on:
     branch: master
     condition: $TRAVIS_EVENT_TYPE = push
