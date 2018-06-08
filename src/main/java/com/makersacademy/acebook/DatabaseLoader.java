@@ -16,7 +16,8 @@ public class DatabaseLoader implements CommandLineRunner {
 
   @Override
   public void run(String... strings) throws Exception {
-  	this.repository.save(new Post("Hey, folks! Welcome to Acebook!"));
-  	this.repository.save(new Post("This is our second post."));
+      this.repository.deleteAll();
+  	  this.repository.save(new Post("This is our second post."));
+  	  this.repository.save(new Post("Hey, folks! Welcome to Acebook!"));
   }
 }
