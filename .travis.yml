@@ -17,5 +17,5 @@ deploy:
   on:
     branch: master
     condition: $TRAVIS_EVENT_TYPE = push
-
+  skip-cleanup: true
 
