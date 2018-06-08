@@ -10,4 +10,4 @@ env:
   - secure: 241vRortjcXaUblZiWel1zECtce759g5fBv/DrgWFJdD7h9DWJNfJ/0F2mRNbG0fLq1dV6LKZ/5Ay9ymYhsUG0Uoaer4FmCQYotDyfIo5CjTU41vbtee5pEjrYU32ifOLBT6p7hG7kZwRjdS8zH2ASrUo8rQXkZO60243Uf/se/yuhyUjHiaosGg3W9/m/UmA9vxdhn5I/XpxUVKd+YALUI4q6ZyVddGgWMT+qM886ZvQ5ctANqUYhUHRvoGom+ORjgjGQ/Uq28vYyBXp9THRglg1dYKeVCIWixyYZ24lENKXSLA1AxqBNj2fsBq94s7qJxj0htW1bKaGnQDaD3isWZmHeWLErkq/yZcSkbiYHCCrqslM7dHVqsfaWrZpSD8Cy1vGe2uR2uSe93SzHPb1fFBhdAcv0gH+RjGf10Ob+lwKyg+YzwYJCjpOKkoYKzfsC8CjlS047zLy5OejbhKGuK2nqG3Bns+of55Vw8yr2HpaX8n7PBTzApssqXLKZFXnv+ck+54AknDA9pwB0mPWivwYGZHKgo7G+LBLpJI9fbzSMh77Grk4Z+sr+IhP21bIgLZ6XMtTPK5OuTLe6HbsQKQ4eC7DKHssryoipcVZ84/cFTP/0yuufkbXgX2qOKvFhtQFcCjYHG45KiovzSlhdaoJdrjNqsP1wzw8/MXsgc=
 after_success:
 - sh .travis/deploy_dockerhub.sh
-- test "$TRAVIS_BRANCH" = "master" && "$TRAVIS_EVENT_TYPE" = "pull" && sh .travis/deploy_heroku.sh
+- test "$TRAVIS_BRANCH" = "master" && "$TRAVIS_EVENT_TYPE" = "push" && sh .travis/deploy_heroku.sh
