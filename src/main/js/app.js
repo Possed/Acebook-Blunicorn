@@ -20,17 +20,19 @@ class App extends React.Component {
   }
 
   onCreate(post) {
-    client({
-        method: 'POST',
-        path: '/api/posts',
-        entity: post,
-        headers: {'Content-Type': 'application/json'}
-        }).done(client({method: 'GET', path: '/api/posts'}).then(response => {
-                      this.setState({posts: response.entity._embedded.posts});
-                    }));
+        client({
+            method: 'POST',
+            path: '/api/posts',
+            entity: post,
+            headers: {'Content-Type': 'application/json'}
+            }).done(client({method: 'GET', path: '/api/posts'}).then(response => {
+                            console.log("getrequest");
+                          this.setState({posts: response.entity._embedded.posts});
+                        }));
   }
 
   render() {
+  console.log("rendering" , this.state);
     return (
       <div>
         <Posts posts={this.state.posts}/>

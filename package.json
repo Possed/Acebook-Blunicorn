@@ -4,8 +4,8 @@
   "description": "A template project for spring boot/react.js",
   "main": "index.js",
   "dependencies": {
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
     "rest": "^2.0.0",
     "webpack": "^4.10.2",
     "webpack-cli": "^2.1.4"
