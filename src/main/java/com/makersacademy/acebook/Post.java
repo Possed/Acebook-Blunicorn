@@ -1,10 +1,11 @@
 package com.makersacademy.acebook;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -12,6 +13,10 @@ public class Post {
 
     private @Id @GeneratedValue Long id;
     private String content;
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
 
     private Post() {}
 
