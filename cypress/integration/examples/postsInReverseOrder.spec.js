@@ -11,6 +11,10 @@ context('Post Order', () => {
     })
 
     it('Displays posts in reverse chronological order', () => {
-        cy.get("#app").first().contains("Posted Second");
+        cy.get(".post-content").first().contains("Posted Second");
+    })
+
+    it('Displays posts in reverse chronological order', () => {
+        cy.get(".posts-items:nth-of-type(2)").first().contains("Posted Second");
     })
 })
