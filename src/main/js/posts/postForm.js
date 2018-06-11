@@ -4,9 +4,7 @@ class PostForm extends React.Component{
 
     constructor(props) {
         super(props);
-        this.state = {
-            value: "Enter post"
-        };
+        this.state = {};
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
