@@ -26,16 +26,14 @@ class App extends React.Component {
             entity: post,
             headers: {'Content-Type': 'application/json'}
             }).done(client({method: 'GET', path: '/api/posts'}).then(response => {
-                            console.log("getrequest");
                           this.setState({posts: response.entity._embedded.posts});
                         }));
   }
 
   render() {
-  console.log("rendering" , this.state);
     return (
       <div>
-        <Posts posts={this.state.posts}/>
+        <Posts posts={this.state.posts.reverse()}/>
         <PostForm onCreate={this.onCreate}/>
       </div>
     )
