@@ -3,12 +3,14 @@ const ReactDOM = require('react-dom');
 const client = require('./client');
 
 import Posts from './posts/posts'
+import PostForm from './posts/postForm'
 
 class App extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {posts: []};
+		this.onCreate = this.onCreate.bind(this);
 	}
 
   componentDidMount() {
@@ -17,9 +19,23 @@ class App extends React.Component {
     });
   }
 
+  onCreate(post) {
+    client({
+        method: 'POST',
+        path: '/api/posts',
+        entity: post,
+        headers: {'Content-Type': 'application/json'}
+        }).done(client({method: 'GET', path: '/api/posts'}).then(response => {
+                      this.setState({posts: response.entity._embedded.posts});
+                    }));
+  }
+
   render() {
     return (
-      <Posts posts={this.state.posts}/>
+      <div>
+        <Posts posts={this.state.posts}/>
+        <PostForm onCreate={this.onCreate}/>
+      </div>
     )
   }
 }
