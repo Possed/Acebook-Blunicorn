@@ -7,14 +7,6 @@
 </head>
 <body>
 
-<h1>Sign Up</h1>
-<form th:action="@{/users}" th:object="${user}" method="post">
-    <div><label> User Name: <input type="text" name="username"/></label></div>
-    <div><label> Email: <input type="text" name="email"/></label></div>
-    <div><label> Password: <input type="password" name="password"/></label></div>
-    <div><input type="submit" value="Sign Up"/></div>
-</form>
-
 <div th:if="${param.success}">
     <div class="alert alert-info">
         You've successfully registered to our awesome app!

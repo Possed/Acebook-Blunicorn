@@ -19,10 +19,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @Controller
 public class HomeController {
 
-	private final UserRepository repository;
-
 	@Autowired
-	public HomeController(UserRepository repository) { this.repository = repository; }
+	private UserService userService;
 
 	@ModelAttribute("user")
 	public UserRegistrationDto userRegistrationDto() {
@@ -49,10 +47,10 @@ public class HomeController {
         }
 
         if (result.hasErrors()){
-            return "registration";
+            return "register";
         }
 
         userService.save(userDto);
-        return "redirect:/registration?success";
+        return "redirect:/register?success";
     }
 }
