@@ -21,7 +21,8 @@
   "scripts": {
     "start": "npm run webpack",
     "webpack": "webpack -d --watch",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "dev": "java $JAVA_OPTS -Dspring.profiles.active=dev -Dserver.port=$PORT -jar target/*.jar"
   },
   "author": "dearshrewdwit",
   "license": "ISC"
