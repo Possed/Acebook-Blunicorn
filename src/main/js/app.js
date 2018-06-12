@@ -16,18 +16,21 @@ class App extends React.Component {
   componentDidMount() {
     client({method: 'GET', path: '/api/posts'}).then(response => {
       this.setState({posts: response.entity._embedded.posts});
-    });
+    })
   }
 
   onCreate(post) {
-        client({
-            method: 'POST',
-            path: '/api/posts',
-            entity: post,
-            headers: {'Content-Type': 'application/json'}
-            }).done(client({method: 'GET', path: '/api/posts'}).then(response => {
-                          this.setState({posts: response.entity._embedded.posts});
-                        }));
+    client({
+      method: 'POST',
+      path: '/api/posts',
+      entity: post,
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then((res) => {
+        client({method: 'GET', path: '/api/posts'}).then(response => {
+              this.setState({posts: response.entity._embedded.posts});
+            })
+    })
   }
 
   render() {
