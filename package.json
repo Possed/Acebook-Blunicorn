@@ -20,6 +20,7 @@
   "scripts": {
     "start": "npm run webpack",
     "webpack": "webpack -d --watch"
+    "dev_server": "java $JAVA_OPTS -Dspring.profiles.active=dev -Dserver.port=$PORT -jar target/*.jar"
   },
   "author": "dearshrewdwit",
   "license": "ISC"
