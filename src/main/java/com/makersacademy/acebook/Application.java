@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Throwable {
 
         String ENV_PORT = System.getenv().get("PORT");
         String ENV_DYNO = System.getenv().get("DYNO");
