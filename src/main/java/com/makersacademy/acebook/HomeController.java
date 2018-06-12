@@ -1,18 +1,19 @@
 package com.makersacademy.acebook;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.context.request.WebRequest;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
-import java.util.Map;
-
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
@@ -23,15 +24,35 @@ public class HomeController {
 	@Autowired
 	public HomeController(UserRepository repository) { this.repository = repository; }
 
+	@ModelAttribute("user")
+	public UserRegistrationDto userRegistrationDto() {
+		return new UserRegistrationDto();
+	}
+
 	@RequestMapping(value = "/")
 	public String index() {
 		return "index";
 	}
 
+	@RequestMapping(value = "/users", method = GET)
+	public String registration(Model model) { return "register"; }
+
 	@RequestMapping(value = "/users", method = POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public String registration(HttpServletRequest request) {
-		String[] parammap = request.getParameterValues("username");
-		this.repository.save(new User(parammap, "hello@test.com", "password123"));
-		return "index";
-	}
+	public String registrationUser(
+			@ModelAttribute("user") @Valid UserRegistrationDto userDto,
+			BindingResult result) {
+
+
+        User existing = userService.findByEmail(userDto.getEmail());
+        if (existing != null){
+            result.rejectValue("email", null, "There is already an account registered with that email");
+        }
+
+        if (result.hasErrors()){
+            return "registration";
+        }
+
+        userService.save(userDto);
+        return "redirect:/registration?success";
+    }
 }

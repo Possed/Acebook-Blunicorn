@@ -18,13 +18,9 @@
         <div><input type="submit" value="Sign In"/></div>
     </form>
 
-    <h1>Sign Up</h1>
-    <form action="/users" method="post">
-        <div><label> User Name: <input type="text" name="username"/></label></div>
-        <div><label> Email: <input type="text" name="email"/></label></div>
-        <div><label> Password: <input type="password" name="password"/></label></div>
-        <div><input type="submit" value="Sign Up"/></div>
-    </form>
+    <div class="form-group">
+        <span>New user? <a href="/" th:href="@{/users}">Register here</a></span>
+    </div>
 
 </body>
 </html>
