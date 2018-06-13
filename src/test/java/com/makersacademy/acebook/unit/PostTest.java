@@ -1,4 +1,4 @@
-package com.makersacademy.unit;
+package com.makersacademy.acebook.unit;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;

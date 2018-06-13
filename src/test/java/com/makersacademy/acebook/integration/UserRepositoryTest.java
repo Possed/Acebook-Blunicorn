@@ -1,4 +1,4 @@
-package com.makersacademy.integration;
+package com.makersacademy.acebook.integration;
 
 import com.makersacademy.acebook.User;
 import com.makersacademy.acebook.UserRepository;
@@ -11,8 +11,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace.NONE;
-
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -30,31 +28,22 @@ public class UserRepositoryTest {
 
     @Test
     public void findsByEmail() {
-        User firstUser = new User();
-        firstUser.setUsername("firstUser");
-        firstUser.setEmail("firstUser@email.com");
-        firstUser.setPassword("password1");
+        User firstUser = new User("firstUser", "firstUser@email.com", "password1" );
         entityManager.persist(firstUser);
         entityManager.flush();
 
-        User secondUser = new User();
-        firstUser.setUsername("secondUser");
-        firstUser.setEmail("secondUser@email.com");
-        firstUser.setPassword("password2");
-        entityManager.persist(secondUser);
-        entityManager.flush();
+        User testUser = userRepository.findByEmail(firstUser.getEmail());
 
-        List<User> users = userRepository.findAll();
-
-        assertEquals(2, users.size());
-
-
+        assertEquals(firstUser.getEmail(), testUser.getEmail());
     }
 
     @Test
     public void findsByUsername() {
+        User firstUser = new User("firstUser", "firstUser@email.com", "password1");
+        entityManager.persist(firstUser);
+        entityManager.flush();
 
+        User testUser = userRepository.findByUsername(firstUser.getUsername());
+        assertEquals(firstUser.getEmail(),testUser.getEmail());
     }
-
-
 }

@@ -16,11 +16,9 @@ public class DatabaseLoader implements CommandLineRunner {
   	this.userRepository = userRepository;
   }
 
-
   @Override
   public void run(String... strings) throws Exception {
       this.postRepository.deleteAll();
-  	  this.postRepository.save(new Post("Hey, folks! Welcome to Acebook!"));
       this.userRepository.deleteAll();
   	  this.userRepository.save(new User("admin", "admin@acebook.com", "password"));
   }
