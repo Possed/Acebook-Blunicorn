@@ -1,8 +1,9 @@
-package com.makersacademy.acebook;
+package com.makersacademy.unit;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
 
+import com.makersacademy.acebook.Post;
 import org.junit.Test;
 
 

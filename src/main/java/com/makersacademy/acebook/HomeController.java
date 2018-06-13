@@ -51,6 +51,6 @@ public class HomeController {
         }
 
         userService.save(userDto);
-        return "redirect:/register?success";
+        return "redirect:/users?success";
     }
 }

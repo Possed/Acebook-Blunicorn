@@ -22,7 +22,7 @@ public class DatabaseLoader implements CommandLineRunner {
       this.postRepository.deleteAll();
   	  this.postRepository.save(new Post("Hey, folks! Welcome to Acebook!"));
       this.userRepository.deleteAll();
-  	  this.userRepository.save(new User("user1", "hell@he.com", "passywordy"));
+  	  this.userRepository.save(new User("admin", "admin@acebook.com", "password"));
   }
 
 }

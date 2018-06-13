@@ -1,4 +1,4 @@
-package com.makersacademy;
+package com.makersacademy.unit;
 
 import com.makersacademy.acebook.User;
 import org.junit.Test;
