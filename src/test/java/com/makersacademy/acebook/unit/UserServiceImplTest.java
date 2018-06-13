@@ -49,7 +49,7 @@ public class UserServiceImplTest {
     @Test
     public void savesUser() {
         userService.save(userDto);
-        verify(userRepository).save(Matchers.any(User.class));
+        verify(userRepository).save(any(User.class));
     }
 
     @Test
