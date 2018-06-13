@@ -36,7 +36,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Posts posts={this.state.posts.reverse()}/>
+        <Posts posts={this.state.posts.reverse()} comments={["first comment", "second comment"]}/>
         <PostForm onCreate={this.onCreate}/>
       </div>
     )
