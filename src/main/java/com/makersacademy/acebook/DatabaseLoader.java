@@ -7,16 +7,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class DatabaseLoader implements CommandLineRunner {
 
-  private final PostRepository repository;
+  private final PostRepository postRepository;
+  private final CommentRepository commentRepository;
 
   @Autowired
-  public DatabaseLoader(PostRepository repository) {
-  	this.repository = repository;
+  public DatabaseLoader(PostRepository postRepository, CommentRepository commentRepository) {
+  	this.postRepository = postRepository;
+  	this.commentRepository = commentRepository;
   }
 
   @Override
   public void run(String... strings) throws Exception {
-      this.repository.deleteAll();
-  	  this.repository.save(new Post("Hey, folks! Welcome to Acebook!"));
+      Post post = new Post("Hey, folks! Welcome to Acebook!");
+      this.postRepository.deleteAll();
+  	  this.postRepository.save(post);
+  	  this.commentRepository.deleteAll();
+  	  this.commentRepository.save(new Comment("This is our first comment!", post));
   }
 }
