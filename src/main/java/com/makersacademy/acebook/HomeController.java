@@ -16,8 +16,12 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @Controller
 public class HomeController {
 
+	private final UserService userService;
+
 	@Autowired
-	private UserService userService;
+	public HomeController(UserService userService){
+		this.userService = userService;
+	}
 
 	@ModelAttribute("user")
 	public UserRegistrationDto userRegistrationDto() {
