@@ -4,4 +4,4 @@
 dependency-reduced-pom.xml
 *.iml
 package-lock.json
-*/bundle.js*
+src/main/resources/static/built/git*
