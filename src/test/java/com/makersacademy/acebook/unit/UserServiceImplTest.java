@@ -39,11 +39,17 @@ public class UserServiceImplTest {
     public void initMocks(){
         MockitoAnnotations.initMocks(this);
         when(userRepository.findByEmail(testEmail)).thenReturn(testUser);
+        when(userRepository.findByUsername(testUsername)).thenReturn(testUser);
     }
 
     @Test
     public void findsByEmail() {
         assertEquals(testUser, userService.findByEmail(testEmail));
+    }
+
+    @Test
+    public void findsByUsername() {
+        assertEquals(testUser, userService.findByUsername(testUsername));
     }
 
     @Test

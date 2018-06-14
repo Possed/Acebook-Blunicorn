@@ -42,9 +42,11 @@ public class HomeController {
 			BindingResult result) {
 
 
-        User existing = userService.findByEmail(userDto.getEmail());
-        if (existing != null){
-            result.rejectValue("email", null, "There is already an account registered with that email");
+        User existingEmail = userService.findByEmail(userDto.getEmail());
+        User existingUsername = userService.findByUsername(userDto.getUsername());
+        if (existingEmail != null || existingUsername != null){
+            result.rejectValue("email", null, "There is already an account registered with those details");
+			return "register";
         }
 
         if (result.hasErrors()){

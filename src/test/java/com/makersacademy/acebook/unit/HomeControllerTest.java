@@ -88,7 +88,7 @@ public class HomeControllerTest {
         User testUser = new User();
         when(userService.findByEmail(any())).thenReturn(testUser);
         testHomeController3.registrationUser(dto, result);
-        verify(result).rejectValue("email", null, "There is already an account registered with that email");
+        verify(result).rejectValue("email", null, "There is already an account registered with those details");
     }
 
 

@@ -19,7 +19,7 @@ context('Logging in and out', () => {
     })
 
     it('redirrects you to the registration page', () => {
-        cy.get('#registerLink').submit()
+        cy.get('#registerLink').click()
         cy.title().should('equal', "Register");
     })
 
