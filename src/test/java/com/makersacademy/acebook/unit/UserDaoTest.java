@@ -20,6 +20,7 @@ public class UserDaoTest {
 
     private UserRegistrationDto dto = new UserRegistrationDto();
     private UserRegistrationDto dto2 = new UserRegistrationDto();
+    private UserRegistrationDto dto3;
     private final String testUsername = "testuser";
     private final String testEmail = "testEmail";
     private final String testPassword = "password";
@@ -61,9 +62,12 @@ public class UserDaoTest {
     public void validatesEmail() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
-        dto2.setEmail(testEmail);
-        Set<ConstraintViolation<UserRegistrationDto>> constraintViolations = validator.validate(dto2);
-        assertEquals(3, constraintViolations.size());
+        dto3 = new UserRegistrationDto();
+        dto3.setUsername(testUsername);
+        dto3.setEmail(testEmail);
+        dto3.setPassword(testPassword);
+        Set<ConstraintViolation<UserRegistrationDto>> constraintViolations = validator.validate(dto3);
+        assertEquals(1, constraintViolations.size());
     }
 
 
