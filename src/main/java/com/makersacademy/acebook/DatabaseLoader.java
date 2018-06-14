@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 @Component
 public class DatabaseLoader implements CommandLineRunner {
 
@@ -20,13 +22,22 @@ public class DatabaseLoader implements CommandLineRunner {
 
   @Override
   public void run(String... strings) throws Exception {
-      Post post = new Post("Hey, folks! Welcome to Acebook!");
       this.postRepository.deleteAll();
       this.userRepository.deleteAll();
       this.commentRepository.deleteAll();
-  	  this.postRepository.save(post);
-  	  this.commentRepository.save(new Comment("This is our first comment!", post));
-  	  this.userRepository.save(new User("admin", "admin@acebook.com", "password"));
+      User newUser = new User("admin", "admin@acebook.com", "password");
+      Post post = new Post("Hey, folks! Welcome to Acebook!");
+  	  Comment com1 = new Comment("This is our first comment!");
+      Comment com2 = new Comment("This is our second comment!");
+      post.setUser(newUser);
+      com1.setPost(post);
+      com2.setPost(post);
+      com1.setUser(newUser);
+      com2.setUser(newUser);
+      this.userRepository.save(newUser);
+      this.postRepository.save(post);
+      this.commentRepository.save(com1);
+      this.commentRepository.save(com2);
   }
 
 }

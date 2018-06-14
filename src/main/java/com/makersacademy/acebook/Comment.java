@@ -10,26 +10,34 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDateTime;
 
+import static javax.persistence.CascadeType.*;
+import static javax.persistence.CascadeType.DETACH;
+
 @Data
 @Entity
 public class Comment {
 
     private @Id @GeneratedValue Long id;
     private String content;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "post_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "post_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Post post;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private User user;
+
     private Comment() {}
 
-
-    public Comment(String content, Post post) {
+    public Comment(String content) {
         this.content = content;
-        this.post = post;
     }
 }

@@ -1,7 +1,9 @@
 package com.makersacademy.acebook;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -18,6 +20,7 @@ public class User {
     private String email;
 
     @Column(name = "password", nullable = false)
+    @JsonIgnore
     private String password;
 
     public User() {}
