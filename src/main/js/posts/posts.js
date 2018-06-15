@@ -4,7 +4,7 @@ import Post from './post'
 class Posts extends React.Component {
 	render() {
 		var posts = this.props.posts.map(post =>
-			<Post key={post._links.self.href} post={post}/>
+			<Post key={post._links.self.href} post={post} />
 		);
 		return (
       <article className='posts-main'>

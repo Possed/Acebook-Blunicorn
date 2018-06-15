@@ -17,6 +17,7 @@ public class Post {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
+    private Integer likes = 0;
 
     private Post() {}
 

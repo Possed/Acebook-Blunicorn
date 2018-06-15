@@ -18,6 +18,7 @@ class PostForm extends React.Component{
         newPost["content"] = this.state.value;
         this.props.onCreate(newPost);
         event.preventDefault();
+        this.setState({value: []});
     }
 
 	render() {
