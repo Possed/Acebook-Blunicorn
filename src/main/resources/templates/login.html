@@ -21,17 +21,17 @@
         </div>
     </div>
 </div>
-    <div th:if="${param.error}">
-        Invalid username and password.
-    </div>
-    <div th:if="${param.logout}">
-        You have been logged out.
-    </div>
     <h1>Log In</h1>
     <form th:action="@{/login}" id="loginForm" method="post">
         <div><label> User Name: <input type="text" name="username"/></label></div>
         <div><label> Password: <input type="password" name="password"/></label></div>
         <div><input type="submit" value="Sign In"/></div>
     </form>
+<div th:if="${param.error}">
+    Invalid username and password.
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
 </body>
 </html>

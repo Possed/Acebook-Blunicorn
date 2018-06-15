@@ -25,8 +25,8 @@ class PostForm extends React.Component{
 		return (
 		        <div>
                     <form id="postForm" onSubmit={this.handleSubmit}>
-                        <textarea id="newPost" rows="4" cols="50" value={this.state.value} onChange={this.handleChange} />
-                        <button type="submit">Post</button>
+                            <textarea c id="newPost" rows="4" style="width:100%;" value={this.state.value} onChange={this.handleChange} /><br>
+                            <button class="button" type="submit">Post</button>
                     </form>
                 </div>
 		)
