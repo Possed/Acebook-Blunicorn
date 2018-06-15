@@ -11,6 +11,17 @@ class Post extends React.Component{
         this.createComment = this.createComment.bind(this);
     }
 
+    componentDidMount() {
+        this.getComments();
+  }
+
+    getComments(){
+        client({method: 'GET', path: "/api" + this.props.post._links.comments.href.split("api")[1]}).then(response => {
+                this.setState({comments: response.entity._embedded.comments});
+                console.log(this.state.comments);
+            })
+    }
+
     createComment(comment){
         client({
             method: 'POST',
@@ -19,7 +30,7 @@ class Post extends React.Component{
             headers: {'Content-Type': 'application/json'}
             })
             .then((res) => {
-                console.log(res);
+                this.getComments();
             })
     }
 
@@ -27,8 +38,12 @@ class Post extends React.Component{
 		return [
 		    <div className='post-content'>{this.props.post.createdAt.split('T')[0]}</div>,
 		    <div>{this.props.post.content}</div>,
-		    <CommentForm createComment={this.createComment} post={this.props.post}/>,
-		    <hr/>
+		    <div>
+		        <Comments allComments={this.state.comments}/>,
+		        <CommentForm createComment={this.createComment} post={this.props.post}/>,
+		        <hr/>
+		    </div>
+
         ];
 	}
 }

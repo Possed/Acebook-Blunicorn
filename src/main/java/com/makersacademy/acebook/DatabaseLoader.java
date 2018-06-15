@@ -22,9 +22,9 @@ public class DatabaseLoader implements CommandLineRunner {
 
   @Override
   public void run(String... strings) throws Exception {
+      this.commentRepository.deleteAll();
       this.postRepository.deleteAll();
       this.userRepository.deleteAll();
-      this.commentRepository.deleteAll();
       User newUser = new User("admin", "admin@acebook.com", "password");
       Post newPost = new Post("First post");
       Comment comment = new Comment("comments");
