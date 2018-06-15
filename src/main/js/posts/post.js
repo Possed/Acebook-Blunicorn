@@ -1,5 +1,5 @@
 import React from 'react';
-import Comments from './comment/comment';
+import Comments from './comment/comments';
 import CommentForm from './comment/commentForm';
 const client = require('../client');
 
@@ -39,8 +39,8 @@ class Post extends React.Component{
 		    <div className='post-content'>{this.props.post.createdAt.split('T')[0]}</div>,
 		    <div>{this.props.post.content}</div>,
 		    <div>
-		        <Comments allComments={this.state.comments}/>,
-		        <CommentForm createComment={this.createComment} post={this.props.post}/>,
+		        <Comments allComments={this.state.comments}/>
+		        <CommentForm createComment={this.createComment} post={this.props.post}/>
 		        <hr/>
 		    </div>
 
