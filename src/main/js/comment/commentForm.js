@@ -13,10 +13,12 @@ class CommentForm extends React.Component{
     }
 
     handleSubmit(event) {
+        event.preventDefault();
         var newComment = {};
         newComment["content"] = this.state.value;
-        this.props.onCreate(newComment);
-        event.preventDefault();
+        newComment["post"] = this.props.post_links.self.href;
+        this.props.createComment(newComment);
+        this.setState({value: ' '})
     }
 
     render() {

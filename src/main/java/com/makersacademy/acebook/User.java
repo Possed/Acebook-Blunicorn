@@ -3,6 +3,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -22,6 +23,14 @@ public class User {
     @Column(name = "password", nullable = false)
     @JsonIgnore
     private String password;
+
+    @OneToMany
+    @JoinColumn(name="user_id")
+    private List<Post> posts = new ArrayList<>();
+
+    @OneToMany
+    @JoinColumn(name="user_id")
+    private List<Comment> comments = new ArrayList<>();
 
     public User() {}
 

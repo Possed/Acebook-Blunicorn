@@ -15,6 +15,7 @@ import static javax.persistence.CascadeType.DETACH;
 
 @Data
 @Entity
+@Table(name="comment")
 public class Comment {
 
     private @Id @GeneratedValue Long id;
@@ -32,7 +33,6 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "user_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private User user;
 
     private Comment() {}

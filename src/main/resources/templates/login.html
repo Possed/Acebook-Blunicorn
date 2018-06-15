@@ -6,6 +6,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css"/>
 </head>
 <body>
+<div class="ui inverted segment">
+    <div class="ui inverted menu">
+        <div class="large item">
+            <a>Acebook</a>
+        </div>
+        <div class="ui right inverted secondary pointing menu">
+            <a class="active item">
+                Login
+            </a>
+            <a class="item" id="registerLink" href="/users">
+                Register
+            </a>
+        </div>
+    </div>
+</div>
     <div th:if="${param.error}">
         Invalid username and password.
     </div>
@@ -18,12 +33,5 @@
         <div><label> Password: <input type="password" name="password"/></label></div>
         <div><input type="submit" value="Sign In"/></div>
     </form>
-
-    <div class="form-group">
-        <div class="form-group">
-            <a id="registerLink" href="/users">Register</a>
-        </div>
-    </div>
-
 </body>
 </html>
