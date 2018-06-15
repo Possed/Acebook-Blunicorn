@@ -18,7 +18,7 @@ import static javax.persistence.CascadeType.*;
 
 @Data
 @Entity
-@Table(name="post")
+@Table(name="posts")
 public class Post {
 
     @Id
@@ -31,12 +31,11 @@ public class Post {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @OneToMany
-    @JoinColumn(name="post_id")
+    @OneToMany(mappedBy="post")
     private List<Comment> comments = new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name="user_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
@@ -46,9 +45,5 @@ public class Post {
         this.content = content;
     }
 
-    public Post(String content, User user) {
-        this.content = content;
-        this.user = user;
-    }
 
 }

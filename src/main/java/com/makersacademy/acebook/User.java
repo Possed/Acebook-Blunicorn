@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "`User`")
+@Table(name = "`Users`")
 public class User {
 
     @Column(name = "id", nullable = false, updatable = false)
@@ -24,12 +24,10 @@ public class User {
     @JsonIgnore
     private String password;
 
-    @OneToMany
-    @JoinColumn(name="user_id")
+    @OneToMany(mappedBy="user")
     private List<Post> posts = new ArrayList<>();
 
-    @OneToMany
-    @JoinColumn(name="user_id")
+    @OneToMany(mappedBy="user")
     private List<Comment> comments = new ArrayList<>();
 
     public User() {}

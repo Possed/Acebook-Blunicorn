@@ -26,6 +26,11 @@ public class DatabaseLoader implements CommandLineRunner {
       this.userRepository.deleteAll();
       this.commentRepository.deleteAll();
       User newUser = new User("admin", "admin@acebook.com", "password");
+      Post newPost = new Post("First post");
+      Comment comment = new Comment("comments");
+      comment.setPost(newPost);
+      this.postRepository.save(newPost);
+      this.commentRepository.save(comment);
       this.userRepository.save(newUser);
   }
 

@@ -4,7 +4,7 @@ import Comment from './comment';
 class Comments extends React.Component {
     render() {
         var comments = this.props.comments.map(comment =>
-            <Comment comment={comment}/>
+            <Comment key={comment._links.self.href} comment={comment}/>
         );
         return (
        <article className='comments-main'>
@@ -15,5 +15,7 @@ class Comments extends React.Component {
          )
     }
 }
+
+Comments.defaultProps = { comments: [] }
 
 export default Comments;

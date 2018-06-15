@@ -9,16 +9,16 @@ class CommentForm extends React.Component{
     }
 
     handleChange(event) {
-        this.setState({value: event.target.value})
+        this.setState({value: event.target.value});
     }
 
     handleSubmit(event) {
         event.preventDefault();
         var newComment = {};
-        newComment["content"] = this.state.value;
-        newComment["post"] = this.props.post_links.self.href;
+        newComment['content'] = this.state.value;
+        newComment['post'] = this.props.post._links.self.href;
         this.props.createComment(newComment);
-        this.setState({value: ' '})
+        this.setState({value: ''});
     }
 
     render() {
@@ -32,6 +32,8 @@ class CommentForm extends React.Component{
         )
     }
 }
+
+CommentForm.defaultProps = {};
 
 export default CommentForm;
 
